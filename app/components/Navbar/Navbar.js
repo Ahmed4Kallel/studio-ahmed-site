@@ -25,7 +25,7 @@ export default function Navbar() {
         </a>
 
         <button
-          className={styles.hamburger}
+          className={`${styles.hamburger} ${menuOpen ? styles.hamburgerOpen : ""}`}
           aria-label="Toggle menu"
           onClick={() => setMenuOpen(!menuOpen)}
         >

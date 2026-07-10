@@ -196,8 +196,8 @@
   .section {
     flex-direction: column;
     align-items: center;
-    min-height: 40vh;
-    padding-inline: 0;
+    min-height: auto;
+    padding: 3rem 0 4rem;
     display: flex;
   }
 
@@ -244,9 +244,11 @@
 
   .title {
     letter-spacing: -0.05em;
-    margin-top: -40px;
-    font-size: 80px;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: clamp(56px, 14vw, 90px);
     rotate: -3deg;
+    position: relative;
   }
 
   .swiperContainer {
@@ -266,14 +268,14 @@
   .swiper {
     width: 100%;
     max-width: 280px;
-    height: 240px;
+    height: 220px;
     margin: 0 auto;
   }
 
   .swiperSlide img {
     object-fit: contain;
     width: 100%;
-    max-width: 260px;
+    max-width: 240px;
     height: auto;
   }
 
@@ -296,8 +298,8 @@
 
   .swiperButton {
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    width: 44px;
+    height: 44px;
     font-size: 18px;
   }
 
@@ -320,8 +322,7 @@
 
 @media (max-width: 480px) {
   .section {
-    min-height: auto;
-    padding: 2rem 0 3rem;
+    padding: 2.5rem 0 3rem;
   }
 
   .section::before {
@@ -334,7 +335,7 @@
   }
 
   .sideTitle {
-    font-size: 14px;
+    font-size: 13px;
     margin-bottom: 0.75rem;
   }
 
@@ -349,22 +350,21 @@
   }
 
   .title {
-    margin-top: -30px;
-    font-size: 60px;
+    font-size: clamp(44px, 13vw, 60px);
   }
 
   .swiper {
     max-width: 220px;
-    height: 180px;
+    height: 170px;
   }
 
   .swiperSlide img {
-    max-width: 200px;
+    max-width: 190px;
   }
 
   .swiperButton {
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
     font-size: 16px;
   }
 
@@ -383,16 +383,15 @@
   }
 
   .title {
-    margin-top: -24px;
-    font-size: 48px;
+    font-size: 40px;
   }
 
   .swiper {
     max-width: 180px;
-    height: 150px;
+    height: 140px;
   }
 
   .swiperSlide img {
-    max-width: 160px;
+    max-width: 150px;
   }
 }

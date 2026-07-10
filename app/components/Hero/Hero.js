@@ -60,12 +60,13 @@ export default function Hero() {
     mm.add("(max-width: 768px)", () => {
       gsap.fromTo(
         cameraRef.current,
-        { y: 400, rotation: -10, xPercent: -50, yPercent: -50 },
+        { y: 120, rotation: -6, xPercent: -50, yPercent: -50, scale: 0.9 },
         {
           y: 0,
-          rotation: 8,
+          rotation: 6,
           xPercent: -50,
           yPercent: -50,
+          scale: 1,
           duration: 0.8,
           ease: "power3.out",
           delay: 0.2,
@@ -74,24 +75,24 @@ export default function Hero() {
 
       ScrollTrigger.create({
         trigger: "#ultrahd",
-        start: "top 80%",
+        start: "top 85%",
         onEnter: () => {
           gsap.to(cameraRef.current, {
-            y: 750,
-            rotation: -3,
-            scale: 0.8,
-            duration: 1.2,
+            y: 350,
+            rotation: -2,
+            scale: 0.85,
+            duration: 1,
             ease: "power2.out",
           });
         },
         onLeaveBack: () => {
           gsap.to(cameraRef.current, {
             y: 0,
-            rotation: 8,
+            rotation: 6,
             scale: 1,
             xPercent: -50,
             yPercent: -50,
-            duration: 1.2,
+            duration: 1,
             ease: "power2.out",
           });
         },

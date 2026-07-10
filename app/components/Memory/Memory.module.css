@@ -150,8 +150,8 @@
 
 @media (max-width: 768px) {
   .section {
-    min-height: 100vh;
-    padding: 2rem 1.5rem;
+    min-height: auto;
+    padding: 3rem 1.5rem 8rem;
   }
 
   .vLeft { left: 5%; }
@@ -162,6 +162,7 @@
   .contentWrapper {
     flex-direction: column;
     gap: 0.7rem;
+    margin-bottom: 2rem;
   }
 
   .title {
@@ -185,25 +186,37 @@
     font-size: 8px;
   }
 
+  .imagesContainer {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    width: 100%;
+    min-height: 320px;
+    margin-top: 1rem;
+  }
+
+  .centerCamera {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
   .centerCamera img {
-    width: 280px;
+    width: 260px;
   }
 
   .imageBox {
     border: 3px solid #fff;
-    width: 120px;
-    height: 80px;
-  }
-
-  .imagesContainer {
-    top: 52%;
+    width: 110px;
+    height: 75px;
   }
 }
 
 @media (max-width: 480px) {
   .section {
-    min-height: auto;
-    padding: 2.5rem 1rem 6rem;
+    padding: 2.5rem 1rem 7rem;
   }
 
   .title {
@@ -214,24 +227,24 @@
     font-size: 12px;
   }
 
+  .imagesContainer {
+    min-height: 260px;
+  }
+
   .centerCamera img {
-    width: 220px;
+    width: 200px;
   }
 
   .imageBox {
     border: 2px solid #fff;
-    width: 90px;
-    height: 60px;
-  }
-
-  .imagesContainer {
-    top: 55%;
+    width: 85px;
+    height: 55px;
   }
 }
 
 @media (max-width: 360px) {
   .section {
-    padding: 2rem 0.75rem 5rem;
+    padding: 2rem 0.75rem 6rem;
   }
 
   .title {
@@ -242,12 +255,16 @@
     font-size: 11px;
   }
 
+  .imagesContainer {
+    min-height: 220px;
+  }
+
   .centerCamera img {
-    width: 180px;
+    width: 160px;
   }
 
   .imageBox {
-    width: 70px;
-    height: 50px;
+    width: 65px;
+    height: 45px;
   }
 }
