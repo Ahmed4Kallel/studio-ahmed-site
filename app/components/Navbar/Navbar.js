@@ -8,16 +8,18 @@ export default function Navbar() {
   const { cart, cartOpen, toggleCart } = useCart();
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const scrollTo = (id) => {
-    setMenuOpen(false);
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
+  const closeMenu = () => setMenuOpen(false);
 
   return (
     <>
       <nav className={styles.nav}>
         <a className={styles.logo} href="/">
+          <div className={styles.logoIcon}>
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M9.2 13.6c0-1.8 1.5-3.2 3.3-3.2s3.3 1.4 3.3 3.2-1.5 3.3-3.3 3.3-3.3-1.5-3.3-3.3z" />
+              <path d="M20 6h-2.5l-1.5-2h-7L7.5 6H5c-1.1 0-2 .9-2 2v9c0 1.1.9 2 2 2h15c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-8.7 13c-3 0-5.3-2.3-5.3-5.3S8.3 8.4 11.3 8.4s5.3 2.3 5.3 5.3-2.3 5.3-5.3 5.3z" />
+            </svg>
+          </div>
           <div>
             <span className={styles.logoText}>Studio AHMED</span>
             <span className={styles.logoSub}>Premium Cameras</span>
@@ -50,12 +52,12 @@ export default function Navbar() {
         </button>
       </nav>
 
-      <ul className={`${styles.links} ${menuOpen ? styles.open : ""}`}>
+      <ul className={`${styles.links} ${menuOpen ? styles.linksOpen : ""}`}>
         {menuOpen && (
           <button
             className={styles.menuCloseBtn}
             aria-label="Close menu"
-            onClick={() => setMenuOpen(false)}
+            onClick={closeMenu}
           >
             <span />
             <span />
@@ -63,23 +65,31 @@ export default function Navbar() {
           </button>
         )}
         <li>
-          <a onClick={() => scrollTo("home")}>Home</a>
+          <a href="#home" onClick={closeMenu}>Home</a>
         </li>
         <li>
-          <a onClick={() => scrollTo("ultrahd")}>Ultra HD</a>
+          <a href="#ultrahd" onClick={closeMenu}>Ultra HD</a>
         </li>
         <li>
-          <a onClick={() => scrollTo("memory")}>Memory</a>
+          <a href="#memory" onClick={closeMenu}>Memory</a>
         </li>
         <li>
-          <a onClick={() => scrollTo("capture")}>Capture</a>
+          <a href="#capture" onClick={closeMenu}>Capture</a>
         </li>
         <li>
-          <a onClick={() => scrollTo("testimonials")}>Testimonials</a>
+          <a href="#testimonials" onClick={closeMenu}>Testimonials</a>
         </li>
       </ul>
 
-      <div className={`${styles.drawer} ${cartOpen ? styles.open : ""}`}>
+      {menuOpen && (
+        <div className={styles.menuOverlay} onClick={closeMenu} />
+      )}
+
+      {cartOpen && (
+        <div className={styles.overlay} onClick={toggleCart} />
+      )}
+
+      <div className={`${styles.drawer} ${cartOpen ? styles.drawerOpen : ""}`}>
         <div className={styles.drawerHeader}>
           <h2>Your Cart ({cart.length})</h2>
           <button className={styles.closeBtn} onClick={toggleCart}>
