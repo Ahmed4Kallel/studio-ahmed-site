@@ -278,6 +278,7 @@
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     user-select: none;
+    background: linear-gradient(135deg, #bd6e40, #d4825a);
     border: none;
     border-radius: 12px;
     outline: none;
@@ -288,6 +289,7 @@
     transition: all 0.3s;
     display: flex;
     position: relative;
+    box-shadow: 0 4px 15px #bd6e4066;
   }
 
   .hamburger span {
@@ -393,5 +395,61 @@
 
   .logoSub {
     font-size: 0.55rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav {
+    height: 50px;
+    padding: 30px 1rem;
+  }
+
+  .hamburger {
+    padding: 0.6rem;
+  }
+
+  .hamburger span {
+    width: 20px;
+    height: 2px;
+  }
+
+  .logoText {
+    font-size: 0.9rem;
+  }
+
+  .logoSub {
+    font-size: 0.5rem;
+  }
+
+  .links {
+    width: calc(100% - 24px);
+    padding: 4rem 1.5rem 1.5rem;
+  }
+
+  .links a {
+    padding: 0.875rem 1.25rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .nav {
+    padding: 25px 0.75rem;
+  }
+
+  .logoText {
+    font-size: 0.8rem;
+  }
+
+  .logoSub {
+    font-size: 0.45rem;
+  }
+
+  .hamburger {
+    padding: 0.5rem;
+  }
+
+  .hamburger span {
+    width: 18px;
   }
 }

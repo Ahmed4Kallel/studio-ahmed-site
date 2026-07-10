@@ -104,7 +104,7 @@
   text-align: center;
   width: 100%;
   margin-top: -144px;
-  font-size: 300px;
+  font-size: clamp(60px, 16vw, 300px);
   font-weight: 700;
   position: relative;
   rotate: -4.9deg;
@@ -315,5 +315,84 @@
 
   .swiperButton:hover {
     transform: translateY(-50%) scale(1.1);
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    min-height: auto;
+    padding: 2rem 0 3rem;
+  }
+
+  .section::before {
+    height: 60px;
+    transform: translateY(-50%) rotate(-2deg);
+  }
+
+  .sideContent {
+    padding: 0 0.75rem 1rem;
+  }
+
+  .sideTitle {
+    font-size: 14px;
+    margin-bottom: 0.75rem;
+  }
+
+  .avatar {
+    width: 22px;
+    height: 22px;
+    margin-left: -5px;
+  }
+
+  .avatarsText {
+    font-size: 10px;
+  }
+
+  .title {
+    margin-top: -30px;
+    font-size: 60px;
+  }
+
+  .swiper {
+    max-width: 220px;
+    height: 180px;
+  }
+
+  .swiperSlide img {
+    max-width: 200px;
+  }
+
+  .swiperButton {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  .swiperButtonPrev {
+    left: 5px;
+  }
+
+  .swiperButtonNext {
+    right: 5px;
+  }
+}
+
+@media (max-width: 360px) {
+  .sideTitle {
+    font-size: 12px;
+  }
+
+  .title {
+    margin-top: -24px;
+    font-size: 48px;
+  }
+
+  .swiper {
+    max-width: 180px;
+    height: 150px;
+  }
+
+  .swiperSlide img {
+    max-width: 160px;
   }
 }

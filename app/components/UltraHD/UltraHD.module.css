@@ -194,7 +194,7 @@
   text-align: center;
   width: 100%;
   margin-top: -144px;
-  font-size: 300px;
+  font-size: clamp(80px, 18vw, 300px);
   font-weight: 700;
   position: relative;
   rotate: 4.9deg;
@@ -301,5 +301,70 @@
 
   .title {
     display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    min-height: auto;
+    padding: 3rem 0.75rem 5rem;
+  }
+
+  .section::before {
+    height: 60px;
+    transform: translateY(-50%) rotate(2deg);
+  }
+
+  .sideContent {
+    margin-top: 1rem;
+    padding: 0;
+  }
+
+  .sideTitle {
+    font-size: 16px;
+  }
+
+  .sideDescription {
+    font-size: 11px;
+  }
+
+  .badge {
+    margin-top: 8px;
+    margin-bottom: 16px;
+    padding: 0.75rem 1.25rem;
+    font-size: 9px;
+  }
+
+  .rightContent {
+    position: static;
+    text-align: left;
+    margin-top: 1rem;
+  }
+
+  .rightTitle {
+    font-size: 28px;
+  }
+
+  .rightDescription {
+    font-size: 10px;
+  }
+
+  .cornerBracket {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 360px) {
+  .section {
+    padding: 2.5rem 0.75rem 4rem;
+  }
+
+  .sideTitle {
+    font-size: 14px;
+  }
+
+  .rightTitle {
+    font-size: 24px;
   }
 }

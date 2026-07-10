@@ -69,7 +69,7 @@
 }
 
 .text {
-  font-size: 22px;
+  font-size: clamp(14px, 2vw, 22px);
   font-weight: 700;
   line-height: 1.6;
   font-family: var(--font-montserrat-alternates), "Montserrat Alternates",
@@ -202,5 +202,103 @@
 
   .bottomDivider {
     bottom: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    min-height: auto;
+    margin-bottom: 40px;
+    padding: 2rem 1rem 60px;
+  }
+
+  .quoteTopLeft {
+    font-size: 18px;
+    top: 30px;
+    left: 15px;
+  }
+
+  .quoteBottomRight {
+    font-size: 18px;
+    bottom: 60px;
+    right: 15px;
+  }
+
+  .container {
+    gap: 24px;
+  }
+
+  .images {
+    max-width: 220px;
+    height: 260px;
+  }
+
+  .image {
+    width: 190px;
+    height: 230px;
+    top: 15px !important;
+    left: 15px !important;
+  }
+
+  .content {
+    min-height: 160px;
+  }
+
+  .text {
+    margin-bottom: 16px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .name {
+    font-size: 12px;
+    top: 24px;
+  }
+
+  .divider {
+    bottom: 130px;
+  }
+
+  .counter {
+    font-size: 18px;
+    bottom: 50px;
+  }
+
+  .totalCount {
+    font-size: 12px;
+  }
+
+  .bottomDivider {
+    bottom: 55px;
+  }
+}
+
+@media (max-width: 360px) {
+  .section {
+    padding: 1.5rem 0.75rem 50px;
+  }
+
+  .images {
+    max-width: 180px;
+    height: 220px;
+  }
+
+  .image {
+    width: 150px;
+    height: 190px;
+    top: 15px !important;
+    left: 15px !important;
+  }
+
+  .text {
+    font-size: 12px;
+  }
+
+  .name {
+    font-size: 11px;
+  }
+
+  .counter {
+    font-size: 16px;
   }
 }
