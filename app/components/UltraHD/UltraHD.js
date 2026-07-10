@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
-import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./UltraHD.module.css";
@@ -10,7 +9,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function UltraHD() {
   const titleRef = useRef(null);
-  const cameraRef = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -31,24 +29,6 @@ export default function UltraHD() {
         },
       }
     );
-
-    gsap.fromTo(
-      cameraRef.current,
-      { y: isMobile ? 150 : 300, opacity: 0, scale: 0.8 },
-      {
-        y: 0,
-        opacity: 1,
-        scale: 1,
-        duration: isMobile ? 0.8 : 1.2,
-        ease: "power3.out",
-        delay: isMobile ? 0.3 : 0.5,
-        scrollTrigger: {
-          trigger: cameraRef.current,
-          start: isMobile ? "top 85%" : "top 80%",
-          once: true,
-        },
-      }
-    );
   }, [isMobile]);
 
   return (
@@ -59,10 +39,6 @@ export default function UltraHD() {
         <span className={`${styles.hLine} ${styles.hBottom}`} />
         <span className={`${styles.vLine} ${styles.vLeft}`} />
         <span className={`${styles.vLine} ${styles.vRight}`} />
-      </div>
-
-      <div className={styles.cameraWrapper} ref={cameraRef}>
-        <Image alt="Hero Camera" src="/heroCamera.png" width={900} height={700} priority />
       </div>
 
       <div className={styles.sideContent}>

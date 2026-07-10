@@ -110,8 +110,8 @@
   -webkit-user-select: none;
   user-select: none;
   will-change: transform;
-  position: absolute;
-  top: 88%;
+  position: fixed;
+  top: 82%;
   left: 50%;
   transform: translate(-50%, -50%);
 }

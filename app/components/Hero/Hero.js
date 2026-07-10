@@ -13,16 +13,17 @@ export default function Hero() {
 
   useEffect(() => {
     const mm = gsap.matchMedia();
+    const vh = window.innerHeight;
 
     mm.add("(min-width: 769px)", () => {
       gsap.fromTo(
         cameraRef.current,
-        { y: 600, rotation: -15, xPercent: -50, yPercent: -50 },
+        { y: 120, rotation: -10, scale: 0.9, opacity: 0 },
         {
           y: 0,
-          rotation: 10,
-          xPercent: -50,
-          yPercent: -50,
+          rotation: 6,
+          scale: 1,
+          opacity: 1,
           duration: 1.2,
           ease: "power3.out",
           delay: 0.3,
@@ -32,25 +33,37 @@ export default function Hero() {
       ScrollTrigger.create({
         trigger: "#ultrahd",
         start: "top 80%",
+        end: "top 20%",
+        scrub: 1,
+        onUpdate: (self) => {
+          const progress = self.progress;
+          gsap.to(cameraRef.current, {
+            y: -0.32 * vh * progress,
+            scale: 1 + 0.5 * progress,
+            rotation: 6 - 6 * progress,
+            duration: 0.1,
+            overwrite: "auto",
+          });
+        },
+      });
+
+      ScrollTrigger.create({
+        trigger: "#memory",
+        start: "top 80%",
         onEnter: () => {
           gsap.to(cameraRef.current, {
-            y: 1000,
-            rotation: -5,
-            scale: 1.2,
-            x: 120,
-            duration: 1.5,
-            ease: "power2.out",
+            y: vh,
+            opacity: 0,
+            duration: 0.8,
+            ease: "power2.in",
           });
         },
         onLeaveBack: () => {
           gsap.to(cameraRef.current, {
-            y: 0,
-            rotation: 10,
-            scale: 1,
-            x: 0,
-            xPercent: -50,
-            yPercent: -50,
-            duration: 1.5,
+            y: -0.32 * vh,
+            opacity: 1,
+            scale: 1.5,
+            duration: 0.8,
             ease: "power2.out",
           });
         },
@@ -60,13 +73,12 @@ export default function Hero() {
     mm.add("(max-width: 768px)", () => {
       gsap.fromTo(
         cameraRef.current,
-        { y: 120, rotation: -6, xPercent: -50, yPercent: -50, scale: 0.9 },
+        { y: 80, rotation: -6, scale: 0.9, opacity: 0 },
         {
           y: 0,
-          rotation: 6,
-          xPercent: -50,
-          yPercent: -50,
+          rotation: 4,
           scale: 1,
+          opacity: 1,
           duration: 0.8,
           ease: "power3.out",
           delay: 0.2,
@@ -76,23 +88,37 @@ export default function Hero() {
       ScrollTrigger.create({
         trigger: "#ultrahd",
         start: "top 85%",
+        end: "top 25%",
+        scrub: 1,
+        onUpdate: (self) => {
+          const progress = self.progress;
+          gsap.to(cameraRef.current, {
+            y: -0.3 * vh * progress,
+            scale: 1 + 0.3 * progress,
+            rotation: 4 - 4 * progress,
+            duration: 0.1,
+            overwrite: "auto",
+          });
+        },
+      });
+
+      ScrollTrigger.create({
+        trigger: "#memory",
+        start: "top 80%",
         onEnter: () => {
           gsap.to(cameraRef.current, {
-            y: 350,
-            rotation: -2,
-            scale: 0.85,
-            duration: 1,
-            ease: "power2.out",
+            y: vh,
+            opacity: 0,
+            duration: 0.6,
+            ease: "power2.in",
           });
         },
         onLeaveBack: () => {
           gsap.to(cameraRef.current, {
-            y: 0,
-            rotation: 6,
-            scale: 1,
-            xPercent: -50,
-            yPercent: -50,
-            duration: 1,
+            y: -0.3 * vh,
+            opacity: 1,
+            scale: 1.3,
+            duration: 0.6,
             ease: "power2.out",
           });
         },
