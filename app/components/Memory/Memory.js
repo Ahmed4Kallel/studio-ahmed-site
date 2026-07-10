@@ -26,15 +26,55 @@ export default function Memory() {
   useEffect(() => {
     if (isMobile === null) return;
 
-    const ctx = gsap.context(() => {
-      const scaleMultiplier = isMobile ? 0.65 : 1;
-      const offsetMultiplier = isMobile ? 0.5 : 1;
-      const pinDistance = isMobile ? "+=1300" : "+=8000";
+    if (isMobile) {
+      const ctx = gsap.context(() => {
+        const positions = [
+          { x: -90, y: -70, rotate: -5 },
+          { x: 90, y: -60, rotate: 4 },
+          { x: -110, y: 10, rotate: -3 },
+          { x: 100, y: 0, rotate: 6 },
+          { x: -80, y: 70, rotate: 2 },
+          { x: 0, y: 0, rotate: 0, hidden: true },
+          { x: 0, y: 0, rotate: 0, hidden: true },
+          { x: 0, y: 0, rotate: 0, hidden: true },
+        ];
 
+        imgRefs.current.forEach((img, i) => {
+          if (!img) return;
+          gsap.set(img, { opacity: 0, scale: 0.5, x: 0, y: 0, rotation: 0 });
+        });
+
+        ScrollTrigger.create({
+          trigger: sectionRef.current,
+          start: "top 75%",
+          once: true,
+          onEnter: () => {
+            imgRefs.current.forEach((img, i) => {
+              if (!img) return;
+              const pos = positions[i] || { x: 0, y: 0, rotate: 0, hidden: true };
+              if (pos.hidden) return;
+              gsap.to(img, {
+                opacity: 1,
+                scale: 1,
+                x: pos.x,
+                y: pos.y,
+                rotation: pos.rotate,
+                duration: 0.5,
+                delay: i * 0.06,
+                ease: "back.out(1.7)",
+              });
+            });
+          },
+        });
+      });
+      return () => ctx.revert();
+    }
+
+    const ctx = gsap.context(() => {
       ScrollTrigger.create({
         trigger: sectionRef.current,
         start: "top top",
-        end: pinDistance,
+        end: "+=8000",
         pin: true,
         pinSpacing: true,
       });
@@ -43,138 +83,71 @@ export default function Memory() {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: pinDistance,
+          end: "+=8000",
           scrub: 1,
         },
       });
 
-      // Phase 1: Images 1 & 2 appear and scatter
       tl.fromTo(
         imgRefs.current[0],
         { opacity: 0, scale: 0, x: 0, y: 0 },
-        {
-          opacity: 1,
-          scale: isMobile ? 0.85 : 1,
-          x: -200 * scaleMultiplier,
-          y: 0,
-          duration: 1,
-        },
+        { opacity: 1, scale: 1, x: -200, y: 0, duration: 1 },
         0
       );
-
       tl.fromTo(
         imgRefs.current[1],
         { opacity: 0, scale: 0, x: 0, y: 0 },
-        {
-          opacity: 1,
-          scale: isMobile ? 0.85 : 1,
-          x: 200 * scaleMultiplier,
-          y: 0,
-          duration: 1,
-        },
+        { opacity: 1, scale: 1, x: 200, y: 0, duration: 1 },
         0
       );
 
-      // Phase 2: Spread wider + images 3-6 appear
-      tl.to(imgRefs.current[0], { x: -350 * scaleMultiplier, duration: 1 }, 1);
-      tl.to(imgRefs.current[1], { x: 350 * scaleMultiplier, duration: 1 }, 1);
+      tl.to(imgRefs.current[0], { x: -350, duration: 1 }, 1);
+      tl.to(imgRefs.current[1], { x: 350, duration: 1 }, 1);
 
       tl.fromTo(
         imgRefs.current[2],
         { opacity: 0, scale: 0, x: 0, y: 0 },
-        {
-          opacity: 1,
-          scale: isMobile ? 0.65 : 0.75,
-          x: -160 * scaleMultiplier,
-          y: -95 * offsetMultiplier,
-          duration: 1,
-        },
+        { opacity: 1, scale: 0.75, x: -160, y: -95, duration: 1 },
         1
       );
-
       tl.fromTo(
         imgRefs.current[3],
         { opacity: 0, scale: 0, x: 0, y: 0 },
-        {
-          opacity: 1,
-          scale: isMobile ? 0.9 : 1.25,
-          x: 245 * scaleMultiplier,
-          y: -200 * offsetMultiplier,
-          duration: 1,
-        },
+        { opacity: 1, scale: 1.25, x: 245, y: -200, duration: 1 },
         1
       );
-
       tl.fromTo(
         imgRefs.current[4],
         { opacity: 0, scale: 0, x: 0, y: 0 },
-        {
-          opacity: 1,
-          scale: isMobile ? 0.8 : 1.15,
-          x: -235 * scaleMultiplier,
-          y: 185 * offsetMultiplier,
-          duration: 1,
-        },
+        { opacity: 1, scale: 1.15, x: -235, y: 185, duration: 1 },
         1
       );
-
       tl.fromTo(
         imgRefs.current[5],
         { opacity: 0, scale: 0, x: 0, y: 0 },
-        {
-          opacity: 1,
-          scale: isMobile ? 0.65 : 0.85,
-          x: 175 * scaleMultiplier,
-          y: 125 * offsetMultiplier,
-          duration: 1,
-        },
+        { opacity: 1, scale: 0.85, x: 175, y: 125, duration: 1 },
         1
       );
 
-      // Phase 3: further spread + images 7-8 appear
-      if (!isMobile) {
-        tl.to(imgRefs.current[0], { x: -500, duration: 1 }, 2);
-        tl.to(imgRefs.current[1], { x: 500, duration: 1 }, 2);
-        tl.to(imgRefs.current[2], { x: -280, y: -120, scale: 0.75, duration: 1 }, 2);
-        tl.to(imgRefs.current[3], { x: 300, y: -230, scale: 1.25, duration: 1 }, 2);
-        tl.to(imgRefs.current[4], { x: -290, y: 185, scale: 1.15, duration: 1 }, 2);
-        tl.to(imgRefs.current[5], { x: 280, y: 125, scale: 0.85, duration: 1 }, 2);
+      tl.to(imgRefs.current[0], { x: -500, duration: 1 }, 2);
+      tl.to(imgRefs.current[1], { x: 500, duration: 1 }, 2);
+      tl.to(imgRefs.current[2], { x: -280, y: -120, scale: 0.75, duration: 1 }, 2);
+      tl.to(imgRefs.current[3], { x: 300, y: -230, scale: 1.25, duration: 1 }, 2);
+      tl.to(imgRefs.current[4], { x: -290, y: 185, scale: 1.15, duration: 1 }, 2);
+      tl.to(imgRefs.current[5], { x: 280, y: 125, scale: 0.85, duration: 1 }, 2);
 
-        tl.fromTo(
-          imgRefs.current[6],
-          { opacity: 0, scale: 0, x: 0, y: 0 },
-          { opacity: 1, scale: 1, x: -200, y: 0, duration: 1 },
-          2
-        );
-
-        tl.fromTo(
-          imgRefs.current[7],
-          { opacity: 0, scale: 0, x: 0, y: 0 },
-          { opacity: 1, scale: 1, x: 200, y: 0, duration: 1 },
-          2
-        );
-      } else {
-        tl.to(imgRefs.current[0], { x: -400 * scaleMultiplier, duration: 1 }, 2);
-        tl.to(imgRefs.current[1], { x: 400 * scaleMultiplier, duration: 1 }, 2);
-        tl.to(imgRefs.current[2], { x: -220 * scaleMultiplier, y: -110 * offsetMultiplier, scale: 0.6, duration: 1 }, 2);
-        tl.to(imgRefs.current[3], { x: 260 * scaleMultiplier, y: -180 * offsetMultiplier, scale: 0.85, duration: 1 }, 2);
-        tl.to(imgRefs.current[4], { x: -250 * scaleMultiplier, y: 150 * offsetMultiplier, scale: 0.75, duration: 1 }, 2);
-        tl.to(imgRefs.current[5], { x: 230 * scaleMultiplier, y: 110 * offsetMultiplier, scale: 0.6, duration: 1 }, 2);
-
-        tl.fromTo(
-          imgRefs.current[6],
-          { opacity: 0, scale: 0, x: 0, y: 0 },
-          { opacity: 1, scale: 0.75, x: -160 * scaleMultiplier, y: 0, duration: 1 },
-          2
-        );
-
-        tl.fromTo(
-          imgRefs.current[7],
-          { opacity: 0, scale: 0, x: 0, y: 0 },
-          { opacity: 1, scale: 0.75, x: 160 * scaleMultiplier, y: 0, duration: 1 },
-          2
-        );
-      }
+      tl.fromTo(
+        imgRefs.current[6],
+        { opacity: 0, scale: 0, x: 0, y: 0 },
+        { opacity: 1, scale: 1, x: -200, y: 0, duration: 1 },
+        2
+      );
+      tl.fromTo(
+        imgRefs.current[7],
+        { opacity: 0, scale: 0, x: 0, y: 0 },
+        { opacity: 1, scale: 1, x: 200, y: 0, duration: 1 },
+        2
+      );
     });
 
     return () => ctx.revert();

@@ -70,61 +70,6 @@ export default function Hero() {
       });
     });
 
-    mm.add("(max-width: 768px)", () => {
-      gsap.fromTo(
-        cameraRef.current,
-        { y: 60, rotation: -4, scale: 0.92, opacity: 0 },
-        {
-          y: 0,
-          rotation: 3,
-          scale: 1,
-          opacity: 1,
-          duration: 0.8,
-          ease: "power3.out",
-          delay: 0.2,
-        }
-      );
-
-      ScrollTrigger.create({
-        trigger: "#ultrahd",
-        start: "top 85%",
-        end: "top 30%",
-        scrub: 1,
-        onUpdate: (self) => {
-          const progress = self.progress;
-          gsap.to(cameraRef.current, {
-            y: -0.22 * vh * progress,
-            scale: 1 + 0.2 * progress,
-            rotation: 3 - 3 * progress,
-            duration: 0.1,
-            overwrite: "auto",
-          });
-        },
-      });
-
-      ScrollTrigger.create({
-        trigger: "#memory",
-        start: "top 85%",
-        onEnter: () => {
-          gsap.to(cameraRef.current, {
-            y: vh,
-            opacity: 0,
-            duration: 0.6,
-            ease: "power2.in",
-          });
-        },
-        onLeaveBack: () => {
-          gsap.to(cameraRef.current, {
-            y: -0.22 * vh,
-            opacity: 1,
-            scale: 1.2,
-            duration: 0.6,
-            ease: "power2.out",
-          });
-        },
-      });
-    });
-
     return () => mm.revert();
   }, []);
 

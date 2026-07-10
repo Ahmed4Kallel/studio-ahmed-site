@@ -151,7 +151,7 @@
 @media (max-width: 768px) {
   .section {
     min-height: 100vh;
-    padding: 3rem 1rem 4rem;
+    padding: 2rem 1.5rem;
   }
 
   .vLeft { left: 5%; }
@@ -160,127 +160,49 @@
   .hBottom { top: 92%; }
 
   .contentWrapper {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 1rem;
-    margin-bottom: 0;
-    z-index: 5;
-    position: relative;
-  }
-
-  .leftContent {
-    flex: 1;
+    flex-direction: column;
+    gap: 0.7rem;
   }
 
   .title {
-    font-size: clamp(20px, 5vw, 32px);
+    font-size: 32px;
   }
 
   .rightContent {
-    flex: 0 0 45%;
-    text-align: right;
+    flex: 1;
   }
 
   .description {
     max-width: 100%;
-    font-size: clamp(11px, 2.6vw, 13px);
+    font-size: 13px;
   }
 
   .badge {
-    display: inline-block;
-    margin: 1rem 0 0 auto;
+    display: none;
   }
 
   .badgeText {
-    font-size: clamp(7px, 1.6vw, 9px);
+    font-size: 8px;
   }
 
   .imagesContainer {
-    pointer-events: none;
-    position: absolute;
     top: 52%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 60%;
-    min-height: 320px;
-    margin-top: 0;
-    display: flex;
-  }
-
-  .centerCamera {
-    display: block;
-    z-index: 10;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
   }
 
   .centerCamera img {
-    width: clamp(140px, 38vw, 240px);
+    width: 280px;
   }
 
   .imageBox {
     opacity: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: clamp(80px, 20vw, 130px);
-    height: clamp(60px, 15vw, 95px);
+    width: 120px;
+    height: 80px;
     border: 3px solid #fff;
-    border-radius: 6px;
-    box-shadow: 0 6px 20px #0000001a;
-    transform: translate(-50%, -50%);
   }
 
   .imageBox img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
-}
-
-@media (max-width: 480px) {
-  .section {
-    padding: 2.5rem 0.875rem 3rem;
-  }
-
-  .contentWrapper {
-    gap: 0.75rem;
-  }
-
-  .title {
-    font-size: clamp(18px, 5vw, 24px);
-  }
-
-  .description {
-    font-size: clamp(10px, 2.6vw, 12px);
-  }
-
-  .imagesContainer {
-    min-height: 280px;
-  }
-
-  .imageBox {
-    border: 2.5px solid #fff;
-  }
-}
-
-@media (max-width: 360px) {
-  .section {
-    padding: 2rem 0.75rem 3rem;
-  }
-
-  .title {
-    font-size: 16px;
-  }
-
-  .description {
-    font-size: 10px;
-  }
-
-  .imagesContainer {
-    min-height: 240px;
   }
 }

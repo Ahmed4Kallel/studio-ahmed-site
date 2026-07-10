@@ -208,165 +208,55 @@
 
 @media screen and (max-width: 768px) {
   .section {
-    min-height: 100svh;
-    padding: 80px 1rem 1.5rem;
+    padding: 12px;
     position: relative;
   }
 
   .titleLeft {
     align-self: flex-start;
     margin-left: 0;
-    font-size: clamp(24px, 8.5vw, 48px);
+    font-size: 55px;
   }
 
   .titleRight {
     align-self: flex-end;
     margin-right: 0;
-    font-size: clamp(24px, 8.5vw, 48px);
+    font-size: 55px;
   }
 
   .titlesWrapper {
     align-items: stretch;
     width: 100%;
     padding: 0;
-    z-index: 2;
   }
 
   .cameraWrapper {
-    position: fixed;
-    top: 60%;
+    position: absolute;
+    top: 88%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 3;
   }
 
   .cameraWrapper img {
-    width: clamp(140px, 40vw, 240px);
+    width: 300px;
     height: auto;
   }
 
   .titleBlock {
-    margin-top: 0;
-    margin-bottom: 0;
-    flex: 1;
-    justify-content: center;
-    min-height: 0;
+    margin-top: -120px;
+    margin-bottom: 120px;
   }
 
   .badge {
     margin: 0;
-    display: inline-block;
+    display: block;
     position: absolute;
-    bottom: 5.5rem;
-    left: 1.25rem;
-    transform: rotate(-9deg);
-    z-index: 4;
+    bottom: 7rem;
+    left: 30%;
+    transform: translate(-50%) rotate(-9deg);
   }
 
   .bottomRow {
-    z-index: 4;
-    text-align: left;
-    justify-content: space-between;
-    align-items: flex-end;
-    width: 100%;
-    max-width: 100%;
-    margin-inline: 0;
-    margin-top: auto;
-    padding-bottom: 0.5rem;
-    display: flex;
-    gap: 1rem;
-  }
-
-  .leftContent {
-    flex: 1;
-    gap: 0.5rem;
-    max-width: 60%;
-  }
-
-  .description {
-    text-align: left;
-    max-width: none;
-    margin-bottom: 0;
-    font-size: clamp(0.7rem, 2.8vw, 0.85rem);
-    line-height: 1.5;
-  }
-
-  .sideNote {
-    text-align: right;
-    align-self: flex-end;
-    max-width: 40%;
-    font-size: clamp(0.7rem, 2.8vw, 0.85rem);
-    line-height: 1.5;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .section {
-    padding: 70px 0.875rem 1.25rem;
-  }
-
-  .titleLeft,
-  .titleRight {
-    font-size: clamp(22px, 8vw, 38px);
-  }
-
-  .cameraWrapper {
-    top: 60%;
-  }
-
-  .cameraWrapper img {
-    width: clamp(140px, 45vw, 220px);
-  }
-
-  .badge {
-    bottom: 4.75rem;
-    left: 1rem;
-    padding: 0.75rem 1.1rem;
-  }
-
-  .badgeText {
-    font-size: 8px;
-  }
-
-  .bottomRow {
-    gap: 0.75rem;
-  }
-
-  .description,
-  .sideNote {
-    font-size: clamp(0.65rem, 2.8vw, 0.8rem);
-  }
-}
-
-@media screen and (max-width: 360px) {
-  .section {
-    padding: 65px 0.75rem 1rem;
-  }
-
-  .titleLeft,
-  .titleRight {
-    font-size: 20px;
-  }
-
-  .cameraWrapper {
-    top: 62%;
-  }
-
-  .cameraWrapper img {
-    width: 130px;
-  }
-
-  .badge {
-    bottom: 4.25rem;
-    padding: 0.65rem 1rem;
-  }
-
-  .badgeText {
-    font-size: 7px;
-  }
-
-  .description,
-  .sideNote {
-    font-size: 0.6rem;
+    display: none;
   }
 }

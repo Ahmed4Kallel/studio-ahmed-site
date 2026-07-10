@@ -2,18 +2,15 @@
   z-index: 999999;
   justify-content: space-between;
   align-items: center;
-  max-width: 100vw;
+  max-width: 90vw;
   height: 70px;
+  margin: 0 auto 0 0;
   padding: 0 3rem;
   display: flex;
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  background: #eceae0e6;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 1px 0 #0000000d;
 }
 
 .logo {
@@ -359,8 +356,9 @@
 
 @media (max-width: 768px) {
   .nav {
+    max-width: 100vw;
     height: 60px;
-    padding: 0 1.5rem;
+    padding: 40px 1.5rem;
   }
 
   .menuCloseBtn {
@@ -380,8 +378,8 @@
     transition: all 0.3s;
     display: flex;
     position: absolute;
-    top: 1rem;
-    right: 1rem;
+    top: 1.5rem;
+    right: 1.5rem;
     box-shadow: 0 4px 15px #2f242066;
   }
 
@@ -417,7 +415,6 @@
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     user-select: none;
-    background: linear-gradient(135deg, #bd6e40, #d4825a);
     border: none;
     border-radius: 12px;
     outline: none;
@@ -428,7 +425,6 @@
     transition: all 0.3s;
     display: flex;
     position: relative;
-    box-shadow: 0 4px 15px #bd6e4066;
   }
 
   .hamburger span {
@@ -474,7 +470,7 @@
     justify-content: flex-start;
     align-items: stretch;
     gap: 0.75rem;
-    width: 100%;
+    width: calc(100% - 40px);
     height: 100vh;
     height: 100dvh;
     padding: 5rem 2rem 2rem;
@@ -484,12 +480,12 @@
     top: 0;
     left: 0;
     overflow-y: auto;
-    transform: translateX(100%);
+    transform: translate(100vw);
     box-shadow: -8px 0 40px #0000004d;
   }
 
   .linksOpen {
-    transform: translateX(0);
+    transform: translate(40px);
   }
 
   .links li {
