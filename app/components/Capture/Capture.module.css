@@ -1,0 +1,319 @@
+.section {
+  background-color: #bd6e40;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 80vh;
+  padding-inline: 4rem;
+  display: flex;
+  position: relative;
+  overflow: visible;
+}
+
+.section::before {
+  content: "";
+  transform-origin: 50%;
+  z-index: 0;
+  background-color: #bd6e40;
+  width: 120%;
+  height: 150px;
+  position: absolute;
+  top: 0;
+  left: -10%;
+  right: -10%;
+  transform: translateY(-50%) rotate(-5deg);
+}
+
+.sideContent {
+  z-index: 1;
+  max-width: 400px;
+  position: absolute;
+  bottom: 2rem;
+  left: 4rem;
+}
+
+.sideTitle {
+  font-family: var(--font-montserrat-alternates), "Montserrat Alternates",
+    sans-serif;
+  color: #ffffffd6;
+  max-width: 300px;
+  margin-bottom: 1.5rem;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.avatarsContainer {
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+  display: flex;
+}
+
+.avatarsGroup {
+  align-items: center;
+  display: flex;
+}
+
+.avatar {
+  object-fit: cover;
+  border: 2px solid #bd6e40;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  margin-left: -8px;
+}
+
+.avatar:first-child {
+  margin-left: 0;
+}
+
+.avatarsText {
+  font-family: var(--font-montserrat-alternates), "Montserrat Alternates",
+    sans-serif;
+  color: #ffffffd9;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.badge {
+  width: fit-content;
+  font-family: var(--font-montserrat-alternates), "Montserrat Alternates",
+    sans-serif;
+  color: #332624;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  z-index: 1;
+  background-color: #ffffffe0;
+  border-radius: 50%;
+  padding: 1.5rem 2rem;
+  font-size: 12px;
+  font-weight: 700;
+  display: inline-block;
+  position: absolute;
+  bottom: 4rem;
+  right: 4rem;
+  rotate: 9deg;
+}
+
+.title {
+  z-index: 1;
+  font-family: var(--font-montserrat-alternates), "Montserrat Alternates",
+    sans-serif;
+  text-transform: uppercase;
+  color: #ffffff3f;
+  letter-spacing: -0.07em;
+  text-align: center;
+  width: 100%;
+  margin-top: -144px;
+  font-size: 300px;
+  font-weight: 700;
+  position: relative;
+  rotate: -4.9deg;
+}
+
+.swiperContainer {
+  z-index: 20;
+  align-items: center;
+  gap: 2rem;
+  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.swiper {
+  width: 800px;
+  height: 600px;
+  overflow: visible;
+}
+
+.swiperSlide {
+  justify-content: center;
+  align-items: center;
+  transition: transform 1.2s;
+  display: flex;
+}
+
+.firstSlide {
+  transform: rotate(-15deg);
+}
+
+.firstSlide.sliding {
+  transform: rotate(-50deg) !important;
+}
+
+.secondSlide {
+  transition: transform 1.2s;
+  transform: rotate(20deg);
+}
+
+.secondSlide.rotated,
+.swiper-slide-active .secondSlide {
+  transform: rotate(-20deg) !important;
+}
+
+.swiperSlide img {
+  object-fit: contain;
+  width: 100%;
+  height: auto;
+}
+
+.swiperButton {
+  color: #fff;
+  cursor: pointer;
+  z-index: 30;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid #ffffffc8;
+  border-radius: 50%;
+  outline: none;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 46px;
+  font-size: 24px;
+  transition: all 0.3s;
+  display: flex;
+  position: absolute;
+}
+
+.swiperButtonPrev {
+  left: -280px;
+}
+
+.swiperButtonNext {
+  right: -280px;
+}
+
+.swiperButton:hover {
+  transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+  .section {
+    flex-direction: column;
+    align-items: center;
+    min-height: 40vh;
+    padding-inline: 0;
+    display: flex;
+  }
+
+  .section::before {
+    width: 140%;
+    height: 80px;
+    left: -20%;
+    right: -20%;
+    transform: translateY(-50%) rotate(-3deg);
+  }
+
+  .sideContent {
+    order: 2;
+    max-width: 100%;
+    margin-top: 0;
+    padding: 0 1rem 1rem;
+    position: static;
+  }
+
+  .sideTitle {
+    max-width: 100%;
+    margin-bottom: 1rem;
+    font-size: 16px;
+  }
+
+  .avatarsContainer {
+    gap: 0.5rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .avatar {
+    width: 24px;
+    height: 24px;
+    margin-left: -6px;
+  }
+
+  .avatarsText {
+    font-size: 11px;
+  }
+
+  .badge {
+    display: none;
+  }
+
+  .title {
+    letter-spacing: -0.05em;
+    margin-top: -40px;
+    font-size: 80px;
+    rotate: -3deg;
+  }
+
+  .swiperContainer {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    margin: 0;
+    display: flex;
+    position: relative;
+    top: auto;
+    left: 0;
+    transform: none;
+  }
+
+  .swiper {
+    width: 100%;
+    max-width: 280px;
+    height: 240px;
+    margin: 0 auto;
+  }
+
+  .swiperSlide img {
+    object-fit: contain;
+    width: 100%;
+    max-width: 260px;
+    height: auto;
+  }
+
+  .firstSlide {
+    transform: rotate(-8deg) scale(0.85);
+  }
+
+  .firstSlide.sliding {
+    transform: rotate(-25deg) scale(0.85) !important;
+  }
+
+  .secondSlide {
+    transform: rotate(12deg) scale(0.85);
+  }
+
+  .secondSlide.rotated,
+  .swiper-slide-active .secondSlide {
+    transform: rotate(-12deg) scale(0.85) !important;
+  }
+
+  .swiperButton {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 18px;
+  }
+
+  .swiperButtonPrev {
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+  }
+
+  .swiperButtonNext {
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+  }
+
+  .swiperButton:hover {
+    transform: translateY(-50%) scale(1.1);
+  }
+}
