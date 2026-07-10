@@ -5,6 +5,7 @@
   min-height: 100vh;
   margin-bottom: 9rem;
   padding-inline: 4rem;
+  padding-top: 90px;
   display: flex;
   position: relative;
 }
@@ -208,7 +209,7 @@
 @media screen and (max-width: 768px) {
   .section {
     min-height: 90vh;
-    padding: 12px;
+    padding: 75px 12px 12px;
     position: relative;
   }
 

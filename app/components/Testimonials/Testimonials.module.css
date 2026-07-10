@@ -131,172 +131,105 @@
 
 @media (max-width: 768px) {
   .section {
-    margin-bottom: 60px;
-    padding: 2rem 1.5rem 80px;
+    min-height: auto;
+    margin-bottom: 40px;
+    padding: 3rem 1.5rem;
   }
 
-  .quoteTopLeft {
-    font-size: 24px;
-    top: 40px;
-    left: 20px;
-  }
-
-  .quoteBottomRight {
-    font-size: 24px;
-    bottom: 80px;
-    right: 20px;
+  .quoteTopLeft,
+  .quoteBottomRight,
+  .divider,
+  .bottomDivider,
+  .counter {
+    display: none;
   }
 
   .container {
     flex-direction: column;
-    gap: 40px;
+    gap: 2rem;
     width: 100%;
   }
 
   .images {
-    width: 100%;
-    max-width: 280px;
-    height: 350px;
-    margin: 0 auto;
-  }
-
-  .image {
-    width: 250px;
-    height: 300px;
-    top: 25px !important;
-    left: 15px !important;
+    display: none;
   }
 
   .content {
     width: 100%;
-    min-height: 200px;
+    min-height: auto;
     padding: 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .item {
+    position: relative;
+    opacity: 1 !important;
+    transform: none !important;
+    width: 100%;
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px #0000000d;
+  }
+
+  .item:not(:last-child) {
+    margin-bottom: 0;
   }
 
   .text {
-    margin-bottom: 20px;
-    font-size: 16px;
-    line-height: 1.5;
+    margin-bottom: 1rem;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .nameContainer {
+    min-height: auto;
+    margin-top: 0;
+    padding-top: 0;
+    position: relative;
   }
 
   .name {
-    font-size: 14px;
-    top: 30px;
-  }
-
-  .divider {
+    position: relative;
+    opacity: 1 !important;
+    font-size: 13px;
     top: auto;
-    bottom: 150px;
-  }
-
-  .counter {
-    font-size: 20px;
-    bottom: 60px;
-  }
-
-  .totalCount {
-    font-size: 14px;
-  }
-
-  .bottomDivider {
-    bottom: 70px;
+    left: auto;
+    color: #bc704f;
   }
 }
 
 @media (max-width: 480px) {
   .section {
-    min-height: auto;
-    margin-bottom: 40px;
-    padding: 2rem 1rem 60px;
+    padding: 2.5rem 1rem;
   }
 
-  .quoteTopLeft {
-    font-size: 18px;
-    top: 30px;
-    left: 15px;
-  }
-
-  .quoteBottomRight {
-    font-size: 18px;
-    bottom: 60px;
-    right: 15px;
-  }
-
-  .container {
-    gap: 24px;
-  }
-
-  .images {
-    max-width: 220px;
-    height: 260px;
-  }
-
-  .image {
-    width: 190px;
-    height: 230px;
-    top: 15px !important;
-    left: 15px !important;
-  }
-
-  .content {
-    min-height: 160px;
+  .item {
+    padding: 1.25rem;
   }
 
   .text {
-    margin-bottom: 16px;
-    font-size: 13px;
-    line-height: 1.5;
+    font-size: 14px;
   }
 
   .name {
     font-size: 12px;
-    top: 24px;
-  }
-
-  .divider {
-    bottom: 130px;
-  }
-
-  .counter {
-    font-size: 18px;
-    bottom: 50px;
-  }
-
-  .totalCount {
-    font-size: 12px;
-  }
-
-  .bottomDivider {
-    bottom: 55px;
   }
 }
 
 @media (max-width: 360px) {
   .section {
-    padding: 1.5rem 0.75rem 50px;
+    padding: 2rem 0.75rem;
   }
 
-  .images {
-    max-width: 180px;
-    height: 220px;
-  }
-
-  .image {
-    width: 150px;
-    height: 190px;
-    top: 15px !important;
-    left: 15px !important;
+  .item {
+    padding: 1rem;
   }
 
   .text {
-    font-size: 12px;
-  }
-
-  .name {
-    font-size: 11px;
-  }
-
-  .counter {
-    font-size: 16px;
+    font-size: 13px;
   }
 }

@@ -43,6 +43,8 @@ export default function Testimonials() {
 
   useEffect(() => {
     const isMobile = window.innerWidth <= 768;
+    if (isMobile) return;
+
     const ctx = gsap.context(() => {
       const imgs = imagesRef.current?.querySelectorAll("img");
 
@@ -50,7 +52,7 @@ export default function Testimonials() {
         if (s >= testimonials.length - 1) return;
 
         const imgToAnimate = imgs?.[testimonials.length - 1 - s];
-        const xDir = s % 2 === 0 ? (isMobile ? -80 : -200) : (isMobile ? 80 : 200);
+        const xDir = s % 2 === 0 ? -200 : 200;
 
         ScrollTrigger.create({
           trigger: sectionRef.current,

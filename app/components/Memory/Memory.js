@@ -24,10 +24,10 @@ export default function Memory() {
   }, []);
 
   useEffect(() => {
-    if (isMobile === null) return;
+    if (isMobile === null || isMobile) return;
 
     const ctx = gsap.context(() => {
-      const scaleMultiplier = isMobile ? 0.35 : 1;
+      const scaleMultiplier = 1;
       const offsetMultiplier = isMobile ? 0.4 : 1;
       const pinDistance = isMobile ? "+=4000" : "+=8000";
 
