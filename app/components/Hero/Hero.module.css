@@ -207,6 +207,7 @@
 
 @media screen and (max-width: 768px) {
   .section {
+    min-height: 90vh;
     padding: 12px;
     position: relative;
   }
@@ -214,13 +215,13 @@
   .titleLeft {
     align-self: flex-start;
     margin-left: 0;
-    font-size: 55px;
+    font-size: clamp(44px, 14vw, 70px);
   }
 
   .titleRight {
     align-self: flex-end;
     margin-right: 0;
-    font-size: 55px;
+    font-size: clamp(44px, 14vw, 70px);
   }
 
   .titlesWrapper {
@@ -229,25 +230,74 @@
     padding: 0;
   }
 
+  .cameraWrapper {
+    top: 78%;
+  }
+
   .cameraWrapper img {
-    width: 300px;
+    width: clamp(220px, 55vw, 300px);
   }
 
   .titleBlock {
-    margin-top: -120px;
-    margin-bottom: 120px;
+    margin-top: -80px;
+    margin-bottom: 80px;
   }
 
   .badge {
     margin: 0;
     display: block;
     position: absolute;
-    bottom: 8rem;
+    bottom: 6rem;
     left: 30%;
     transform: translate(-50%) rotate(-9deg);
   }
 
   .bottomRow {
     display: none;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .titleLeft,
+  .titleRight {
+    font-size: clamp(38px, 13vw, 54px);
+  }
+
+  .cameraWrapper {
+    top: 76%;
+  }
+
+  .cameraWrapper img {
+    width: clamp(190px, 52vw, 260px);
+  }
+
+  .badge {
+    bottom: 5rem;
+    left: 28%;
+    padding: 0.85rem 1.25rem;
+  }
+
+  .badgeText {
+    font-size: 8px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .titleLeft,
+  .titleRight {
+    font-size: 34px;
+  }
+
+  .cameraWrapper img {
+    width: 180px;
+  }
+
+  .badge {
+    bottom: 4.5rem;
+    padding: 0.75rem 1.1rem;
+  }
+
+  .badgeText {
+    font-size: 7px;
   }
 }
