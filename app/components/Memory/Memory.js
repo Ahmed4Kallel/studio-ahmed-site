@@ -24,12 +24,12 @@ export default function Memory() {
   }, []);
 
   useEffect(() => {
-    if (isMobile === null || isMobile) return;
+    if (isMobile === null) return;
 
     const ctx = gsap.context(() => {
-      const scaleMultiplier = 1;
-      const offsetMultiplier = isMobile ? 0.4 : 1;
-      const pinDistance = isMobile ? "+=4000" : "+=8000";
+      const scaleMultiplier = isMobile ? 0.65 : 1;
+      const offsetMultiplier = isMobile ? 0.5 : 1;
+      const pinDistance = isMobile ? "+=1300" : "+=8000";
 
       ScrollTrigger.create({
         trigger: sectionRef.current,
@@ -54,7 +54,7 @@ export default function Memory() {
         { opacity: 0, scale: 0, x: 0, y: 0 },
         {
           opacity: 1,
-          scale: isMobile ? 0.9 : 1,
+          scale: isMobile ? 0.85 : 1,
           x: -200 * scaleMultiplier,
           y: 0,
           duration: 1,
@@ -67,7 +67,7 @@ export default function Memory() {
         { opacity: 0, scale: 0, x: 0, y: 0 },
         {
           opacity: 1,
-          scale: isMobile ? 0.9 : 1,
+          scale: isMobile ? 0.85 : 1,
           x: 200 * scaleMultiplier,
           y: 0,
           duration: 1,
@@ -84,7 +84,7 @@ export default function Memory() {
         { opacity: 0, scale: 0, x: 0, y: 0 },
         {
           opacity: 1,
-          scale: isMobile ? 0.7 : 0.75,
+          scale: isMobile ? 0.65 : 0.75,
           x: -160 * scaleMultiplier,
           y: -95 * offsetMultiplier,
           duration: 1,
@@ -97,7 +97,7 @@ export default function Memory() {
         { opacity: 0, scale: 0, x: 0, y: 0 },
         {
           opacity: 1,
-          scale: isMobile ? 1 : 1.25,
+          scale: isMobile ? 0.9 : 1.25,
           x: 245 * scaleMultiplier,
           y: -200 * offsetMultiplier,
           duration: 1,
@@ -110,7 +110,7 @@ export default function Memory() {
         { opacity: 0, scale: 0, x: 0, y: 0 },
         {
           opacity: 1,
-          scale: isMobile ? 0.95 : 1.15,
+          scale: isMobile ? 0.8 : 1.15,
           x: -235 * scaleMultiplier,
           y: 185 * offsetMultiplier,
           duration: 1,
@@ -123,7 +123,7 @@ export default function Memory() {
         { opacity: 0, scale: 0, x: 0, y: 0 },
         {
           opacity: 1,
-          scale: isMobile ? 0.75 : 0.85,
+          scale: isMobile ? 0.65 : 0.85,
           x: 175 * scaleMultiplier,
           y: 125 * offsetMultiplier,
           duration: 1,
@@ -131,7 +131,7 @@ export default function Memory() {
         1
       );
 
-      // Phase 3 (desktop only): further spread + images 7-8 appear
+      // Phase 3: further spread + images 7-8 appear
       if (!isMobile) {
         tl.to(imgRefs.current[0], { x: -500, duration: 1 }, 2);
         tl.to(imgRefs.current[1], { x: 500, duration: 1 }, 2);
@@ -151,6 +151,27 @@ export default function Memory() {
           imgRefs.current[7],
           { opacity: 0, scale: 0, x: 0, y: 0 },
           { opacity: 1, scale: 1, x: 200, y: 0, duration: 1 },
+          2
+        );
+      } else {
+        tl.to(imgRefs.current[0], { x: -400 * scaleMultiplier, duration: 1 }, 2);
+        tl.to(imgRefs.current[1], { x: 400 * scaleMultiplier, duration: 1 }, 2);
+        tl.to(imgRefs.current[2], { x: -220 * scaleMultiplier, y: -110 * offsetMultiplier, scale: 0.6, duration: 1 }, 2);
+        tl.to(imgRefs.current[3], { x: 260 * scaleMultiplier, y: -180 * offsetMultiplier, scale: 0.85, duration: 1 }, 2);
+        tl.to(imgRefs.current[4], { x: -250 * scaleMultiplier, y: 150 * offsetMultiplier, scale: 0.75, duration: 1 }, 2);
+        tl.to(imgRefs.current[5], { x: 230 * scaleMultiplier, y: 110 * offsetMultiplier, scale: 0.6, duration: 1 }, 2);
+
+        tl.fromTo(
+          imgRefs.current[6],
+          { opacity: 0, scale: 0, x: 0, y: 0 },
+          { opacity: 1, scale: 0.75, x: -160 * scaleMultiplier, y: 0, duration: 1 },
+          2
+        );
+
+        tl.fromTo(
+          imgRefs.current[7],
+          { opacity: 0, scale: 0, x: 0, y: 0 },
+          { opacity: 1, scale: 0.75, x: 160 * scaleMultiplier, y: 0, duration: 1 },
           2
         );
       }

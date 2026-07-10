@@ -43,16 +43,21 @@ export default function Testimonials() {
 
   useEffect(() => {
     const isMobile = window.innerWidth <= 768;
-    if (isMobile) return;
 
     const ctx = gsap.context(() => {
       const imgs = imagesRef.current?.querySelectorAll("img");
+      const xDistance = isMobile ? 80 : 200;
+      const rotationAmount = isMobile ? 10 : 15;
+      const textX = isMobile ? -20 : -30;
+      const smallRotation = isMobile ? 2 : 3;
+      const stepPercent = isMobile ? 80 : 150;
+      const pinEnd = isMobile ? "+=320%" : "+=500%";
 
       testimonials.forEach((_, s) => {
         if (s >= testimonials.length - 1) return;
 
         const imgToAnimate = imgs?.[testimonials.length - 1 - s];
-        const xDir = s % 2 === 0 ? -200 : 200;
+        const xDir = s % 2 === 0 ? -xDistance : xDistance;
 
         ScrollTrigger.create({
           trigger: sectionRef.current,
@@ -60,16 +65,16 @@ export default function Testimonials() {
             s === 0
               ? "top+=0% top"
               : s === testimonials.length - 2
-              ? `top+=${(s - 1) * 150 + 150 + 50}% top`
-              : `top+=${150 * s}% top`,
+              ? `top+=${(s - 1) * stepPercent + stepPercent + (isMobile ? 30 : 50)}% top`
+              : `top+=${stepPercent * s}% top`,
           end:
             s === 0
-              ? "top+=150% top"
+              ? `top+=${stepPercent}% top`
               : s === testimonials.length - 2
-              ? `top+=${(s - 1) * 150 + 150 + 100}% top`
-              : `top+=${(s + 1) * 150}% top`,
+              ? `top+=${(s - 1) * stepPercent + stepPercent + (isMobile ? 60 : 100)}% top`
+              : `top+=${(s + 1) * stepPercent}% top`,
           onEnter: () => {
-            gsap.to(textRefs.current[s], { opacity: 0, x: -30, duration: 0.4 });
+            gsap.to(textRefs.current[s], { opacity: 0, x: textX, duration: 0.4 });
             gsap.to(textRefs.current[s + 1], { opacity: 1, x: 0, duration: 0.4 });
             gsap.to(nameRefs.current[s], { opacity: 0, duration: 0.4 });
             gsap.to(nameRefs.current[s + 1], { opacity: 1, duration: 0.4 });
@@ -78,7 +83,7 @@ export default function Testimonials() {
               gsap.to(imgToAnimate, {
                 x: xDir,
                 opacity: 0,
-                rotation: `+=${xDir > 0 ? -15 : 15}`,
+                rotation: `+=${xDir > 0 ? -rotationAmount : rotationAmount}`,
                 duration: 0.4,
               });
             }
@@ -86,7 +91,7 @@ export default function Testimonials() {
             imgs?.forEach((img, idx) => {
               if (idx !== testimonials.length - 1 - s) {
                 gsap.to(img, {
-                  rotation: `+=${idx % 2 === 0 ? -3 : 3}`,
+                  rotation: `+=${idx % 2 === 0 ? -smallRotation : smallRotation}`,
                   duration: 0.4,
                 });
               }
@@ -98,7 +103,7 @@ export default function Testimonials() {
           },
           onLeaveBack: () => {
             gsap.to(textRefs.current[s], { opacity: 1, x: 0, duration: 0.4 });
-            gsap.to(textRefs.current[s + 1], { opacity: 0, x: -30, duration: 0.4 });
+            gsap.to(textRefs.current[s + 1], { opacity: 0, x: textX, duration: 0.4 });
             gsap.to(nameRefs.current[s], { opacity: 1, duration: 0.4 });
             gsap.to(nameRefs.current[s + 1], { opacity: 0, duration: 0.4 });
 
@@ -106,7 +111,7 @@ export default function Testimonials() {
               gsap.to(imgToAnimate, {
                 x: 0,
                 opacity: 1,
-                rotation: `-=${xDir > 0 ? -15 : 15}`,
+                rotation: `-=${xDir > 0 ? -rotationAmount : rotationAmount}`,
                 duration: 0.4,
               });
             }
@@ -114,7 +119,7 @@ export default function Testimonials() {
             imgs?.forEach((img, idx) => {
               if (idx !== testimonials.length - 1 - s) {
                 gsap.to(img, {
-                  rotation: `-=${idx % 2 === 0 ? -3 : 3}`,
+                  rotation: `-=${idx % 2 === 0 ? -smallRotation : smallRotation}`,
                   duration: 0.4,
                 });
               }
@@ -130,7 +135,7 @@ export default function Testimonials() {
       ScrollTrigger.create({
         trigger: sectionRef.current,
         start: "top top",
-        end: "+=500%",
+        end: pinEnd,
         pin: true,
         pinSpacing: true,
       });

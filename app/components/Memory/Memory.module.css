@@ -150,8 +150,8 @@
 
 @media (max-width: 768px) {
   .section {
-    min-height: auto;
-    padding: 3rem 1.5rem 4rem;
+    min-height: 100vh;
+    padding: 3rem 1rem 4rem;
   }
 
   .vLeft { left: 5%; }
@@ -160,63 +160,78 @@
   .hBottom { top: 92%; }
 
   .contentWrapper {
-    flex-direction: column;
-    gap: 0.7rem;
-    margin-bottom: 2rem;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 0;
+    z-index: 5;
+    position: relative;
+  }
+
+  .leftContent {
+    flex: 1;
   }
 
   .title {
-    font-size: clamp(24px, 7vw, 36px);
+    font-size: clamp(20px, 5vw, 32px);
   }
 
   .rightContent {
-    flex: 1;
+    flex: 0 0 45%;
+    text-align: right;
   }
 
   .description {
     max-width: 100%;
-    font-size: 13px;
+    font-size: clamp(11px, 2.6vw, 13px);
   }
 
   .badge {
     display: inline-block;
-    margin: 1.5rem 0 0;
+    margin: 1rem 0 0 auto;
   }
 
   .badgeText {
-    font-size: 8px;
+    font-size: clamp(7px, 1.6vw, 9px);
   }
 
   .imagesContainer {
-    pointer-events: auto;
-    position: relative;
-    top: auto;
-    left: auto;
-    transform: none;
+    pointer-events: none;
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 100%;
-    min-height: auto;
-    margin-top: 2rem;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
+    height: 60%;
+    min-height: 320px;
+    margin-top: 0;
+    display: flex;
   }
 
   .centerCamera {
-    display: none;
+    display: block;
+    z-index: 10;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .centerCamera img {
+    width: clamp(140px, 38vw, 240px);
   }
 
   .imageBox {
-    opacity: 1;
-    position: relative;
-    top: auto;
-    left: auto;
-    transform: none;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 4 / 3;
-    border: 4px solid #fff;
-    border-radius: 8px;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: clamp(80px, 20vw, 130px);
+    height: clamp(60px, 15vw, 95px);
+    border: 3px solid #fff;
+    border-radius: 6px;
     box-shadow: 0 6px 20px #0000001a;
+    transform: translate(-50%, -50%);
   }
 
   .imageBox img {
@@ -228,23 +243,27 @@
 
 @media (max-width: 480px) {
   .section {
-    padding: 2.5rem 1rem 3rem;
+    padding: 2.5rem 0.875rem 3rem;
   }
 
-  .title {
-    font-size: clamp(22px, 7vw, 28px);
-  }
-
-  .description {
-    font-size: 12px;
-  }
-
-  .imagesContainer {
+  .contentWrapper {
     gap: 0.75rem;
   }
 
+  .title {
+    font-size: clamp(18px, 5vw, 24px);
+  }
+
+  .description {
+    font-size: clamp(10px, 2.6vw, 12px);
+  }
+
+  .imagesContainer {
+    min-height: 280px;
+  }
+
   .imageBox {
-    border: 3px solid #fff;
+    border: 2.5px solid #fff;
   }
 }
 
@@ -254,10 +273,14 @@
   }
 
   .title {
-    font-size: 22px;
+    font-size: 16px;
   }
 
   .description {
-    font-size: 11px;
+    font-size: 10px;
+  }
+
+  .imagesContainer {
+    min-height: 240px;
   }
 }
